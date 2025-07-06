@@ -11,9 +11,9 @@ const Profile = () => {
   return (
     <div>
         <Navbar />
-      <h2>Profile page </h2>
+      <h1>Profile page </h1>
         <div>
-            <h3>Email: {user ? user.email : "No user logged in"}</h3>
+            <p>Email: {user ? user.email : "No user logged in"}</p>
             </div>
     </div>
   );
