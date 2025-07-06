@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import CreateUser from './Pages/CreateUser.jsx'
 import Login from './Pages/Login.jsx'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, ProviderId } from 'firebase/auth'
 import Dashboard from './Pages/Dashboard.jsx';
+import Profile from './Pages/Profile.jsx';
 import "./Services/firebase";
 
 
@@ -37,6 +38,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard/>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile/>
             </PrivateRoute>
           }
         />

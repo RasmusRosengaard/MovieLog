@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 
 
@@ -15,9 +15,10 @@ const CreateUser = () => {
     setError("");
     const auth = getAuth();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCredential.user);
       await auth.signOut();
-      console.log("User created successfully!");
+      alert("Account created! Please check your email to verify your account.");
       navigate("/login");
     } catch (err) {
       setError(err.message);

@@ -26,7 +26,14 @@ const Login = () => {
     
     const auth = getAuth();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+      if (!userCredential.user.emailVerified) {
+        await auth.signOut();
+        alert("Please verify your email before logging in.");
+       
+        return;
+      }
 
       console.log("Logged in successfully!");
       navigate("/dashboard");
