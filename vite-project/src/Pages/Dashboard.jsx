@@ -1,6 +1,8 @@
 import { getAuth } from "firebase/auth";
 import Navbar from "../Components/Navbar";
+import { useEffect } from "react";
 
+  
 const Dashboard = () => {
   const auth = getAuth();
   return (
