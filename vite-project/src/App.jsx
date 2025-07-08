@@ -5,6 +5,7 @@ import Login from './Pages/Login.jsx'
 import { getAuth, onAuthStateChanged, ProviderId } from 'firebase/auth'
 import Dashboard from './Pages/Dashboard.jsx';
 import Profile from './Pages/Profile.jsx';
+import MovieDetail from './Pages/MovieDetail.jsx';
 import "./Services/firebase";
 
 
@@ -41,11 +42,20 @@ function App() {
             </PrivateRoute>
           }
         />
+        
         <Route
           path="/profile"
           element={
             <PrivateRoute>
               <Profile/>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/movies/:id"
+          element={
+            <PrivateRoute>
+              <MovieDetail />
             </PrivateRoute>
           }
         />
